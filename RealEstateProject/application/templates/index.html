@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+<h1>Hello world!</h1>
+<img src="{% static 'main.png' %}" alt="logo" width="150px">
+<div class="row justify-content-evenly">
+    {% for house in houses %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ house.house.image.url }}" alt="Card image">
+            <div class="card-body">
+                <h5 class="card-title">{{ house.house.name }}</h5>
+                <p class="card-text">Area: {{ house.house.area }}</p>
+                <p class="card-text">Price: {{ house.price }}</p>
+                <a href="{% url 'edit' house.house.id %}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
